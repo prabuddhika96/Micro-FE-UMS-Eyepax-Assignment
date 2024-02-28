@@ -16,6 +16,9 @@
     @apply block w-full h-[40px] !px-2;
   }
   .form-btn {
-    @apply block;
+    @apply block !bg-blue-500 !text-white !p-2 w-full !mt-2 hover:!bg-blue-600;
+  }
+  .form-a {
+    @apply !text-blue-600;
   }
 }

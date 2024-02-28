@@ -12,6 +12,7 @@
       type="text"
       id="currentPw"
       formControlName="currentPw"
+      placeholder="Enter your current password"
     />
     <p class="form-error-msg" *ngIf="errorMessages['currentPw']">
       {{ errorMessages["currentPw"] }}
@@ -19,7 +20,13 @@
     <!-- Display error message -->
 
     <label class="form-label" for="newPw">New Password</label>
-    <input class="form-input" type="text" id="newPw" formControlName="newPw" />
+    <input
+      class="form-input"
+      type="text"
+      id="newPw"
+      formControlName="newPw"
+      placeholder="Enter your new password"
+    />
     <p class="form-error-msg" *ngIf="errorMessages['newPw']">
       {{ errorMessages["newPw"] }}
     </p>
@@ -31,6 +38,7 @@
       type="text"
       id="confirmPw"
       formControlName="confirmPw"
+      placeholder="Enter your new password again"
     />
     <p class="form-error-msg" *ngIf="errorMessages['confirmPw']">
       {{ errorMessages["confirmPw"] }}

@@ -7,6 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { User } from '../user';
+import { MatDialog } from '@angular/material/dialog';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 
 @Component({
   selector: 'app-edit-profile',
@@ -16,6 +18,7 @@ import { User } from '../user';
   styleUrls: ['./edit-profile.component.css'],
 })
 export class EditProfileComponent {
+  constructor(private dialog: MatDialog) {}
   userDetails: User = {
     id: 1,
     firstName: 'John',
@@ -63,5 +66,20 @@ export class EditProfileComponent {
         }
       });
     }
+  }
+
+  Openpopup(code: any, title: any, component: any) {
+    var _popup = this.dialog.open(PopUpComponent, {
+      width: '40%',
+      enterAnimationDuration: '100ms',
+      exitAnimationDuration: '100ms',
+      data: { title: title, code: code },
+    });
+    _popup.afterClosed().subscribe((item) => {});
+  }
+
+  changePassword() {
+    // alert();
+    this.Openpopup(0, 'Change Password', PopUpComponent);
   }
 }

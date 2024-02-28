@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="edit-profile">
+      <form
+        [formGroup]="editProfileForm"
+        (submit)="handleSubmit($event)"
+        class="edit-form"
+      >
+        <label class="form-label" for="firstName">First Name</label>
+        <input
+          class="form-input"
+          type="text"
+          id="firstName"
+          formControlName="firstName"
+        />
+        <p *ngIf="errorMessages['firstName']">
+          {{ errorMessages["firstName"] }}
+        </p>
+        <!-- Display error message -->
+
+        <label class="form-label" for="lastName">Last Name</label>
+        <input
+          class="form-input"
+          type="text"
+          id="lastName"
+          formControlName="lastName"
+        />
+        <p *ngIf="errorMessages['lastName']">{{ errorMessages["lastName"] }}</p>
+        <!-- Display error message -->
+
+        <label class="form-label" for="email">Email</label>
+        <input
+          class="form-input"
+          type="text"
+          id="email"
+          formControlName="email"
+        />
+        <p *ngIf="errorMessages['email']">{{ errorMessages["email"] }}</p>
+        <!-- Display error message -->
+
+        <a href="#" class="form-a">Change Password</a>
+
+        <button class="form-btn" type="submit">Save Changes</button>
+      </form>
+    </section>
+  </body>
+</html>

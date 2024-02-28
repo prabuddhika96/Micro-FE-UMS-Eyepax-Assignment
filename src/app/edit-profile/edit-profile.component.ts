@@ -1,33 +1,66 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { User } from '../user';
 
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
-  imports: [ReactiveFormsModule],
-  template: ` <section class="">
-    <form [formGroup]="editProfileForm" (submit)="handleSubmit($event)">
-      <label for="first-name">First Name</label>
-      <input type="text" id="first-name" formControlName="firstName" />
-      <label for="last-name">Last Name</label>
-      <input type="text" id="last-name" formControlName="lastName" />
-      <label for="email">Email</label>
-      <input type="text" id="email" formControlName="email" />
-
-      <button class="primary" type="submit">Apply Now</button>
-    </form>
-  </section>`,
-  styleUrl: './edit-profile.component.css',
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: 'edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.css'],
 })
 export class EditProfileComponent {
+  userDetails: User = {
+    id: 1,
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'john@gmail.com',
+  };
+
   editProfileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
+    firstName: new FormControl(this.userDetails.firstName, Validators.required),
+    lastName: new FormControl(this.userDetails.lastName, Validators.required),
+    email: new FormControl(this.userDetails.email, [
+      Validators.required,
+      Validators.email,
+    ]),
   });
+
+  errorMessages: any = {}; // Initialize errorMessages as an empty object
 
   handleSubmit(event: Event) {
     event.preventDefault();
-    console.log(this.editProfileForm.value);
+    if (this.editProfileForm.valid) {
+      console.log(this.editProfileForm.value);
+    } else {
+      this.editProfileForm.markAllAsTouched();
+      // Clear previous error messages
+      this.errorMessages = {};
+
+      // Iterate through each form control to check for validation errors
+      Object.keys(this.editProfileForm.controls).forEach((key) => {
+        const controlErrors = this.editProfileForm.get(key)?.errors;
+        if (controlErrors != null) {
+          Object.keys(controlErrors).forEach((keyError) => {
+            switch (keyError) {
+              case 'required':
+                this.errorMessages[key] = `${key} is required`;
+                break;
+              case 'email':
+                this.errorMessages[key] = `${key} must be a valid email`;
+                break;
+              default:
+                break;
+            }
+          });
+        }
+      });
+    }
   }
 }

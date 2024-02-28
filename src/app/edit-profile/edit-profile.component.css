@@ -21,4 +21,7 @@
   .form-a {
     @apply !text-blue-600;
   }
+  .form-error-msg {
+    @apply !text-red-600;
+  }
 }

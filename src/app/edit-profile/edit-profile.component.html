@@ -19,7 +19,7 @@
           id="firstName"
           formControlName="firstName"
         />
-        <p *ngIf="errorMessages['firstName']">
+        <p class="form-error-msg" *ngIf="errorMessages['firstName']">
           {{ errorMessages["firstName"] }}
         </p>
         <!-- Display error message -->
@@ -31,7 +31,9 @@
           id="lastName"
           formControlName="lastName"
         />
-        <p *ngIf="errorMessages['lastName']">{{ errorMessages["lastName"] }}</p>
+        <p class="form-error-msg" *ngIf="errorMessages['lastName']">
+          {{ errorMessages["lastName"] }}
+        </p>
         <!-- Display error message -->
 
         <label class="form-label" for="email">Email</label>
@@ -41,7 +43,9 @@
           id="email"
           formControlName="email"
         />
-        <p *ngIf="errorMessages['email']">{{ errorMessages["email"] }}</p>
+        <p class="form-error-msg" *ngIf="errorMessages['email']">
+          {{ errorMessages["email"] }}
+        </p>
         <!-- Display error message -->
 
         <a href="#" class="form-a">Change Password</a>

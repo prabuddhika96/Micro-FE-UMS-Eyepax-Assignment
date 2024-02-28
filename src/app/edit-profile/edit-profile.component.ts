@@ -36,12 +36,13 @@ export class EditProfileComponent {
 
   handleSubmit(event: Event) {
     event.preventDefault();
+    // Clear previous error messages
+    this.errorMessages = {};
+
     if (this.editProfileForm.valid) {
       console.log(this.editProfileForm.value);
     } else {
       this.editProfileForm.markAllAsTouched();
-      // Clear previous error messages
-      this.errorMessages = {};
 
       // Iterate through each form control to check for validation errors
       Object.keys(this.editProfileForm.controls).forEach((key) => {

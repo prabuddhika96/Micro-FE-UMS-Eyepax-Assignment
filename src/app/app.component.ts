@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NzButtonModule } from 'ng-zorro-antd/button';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NzButtonModule],
-  template: ` <button nz-button nzType="primary">Primary Button</button> `,
+  imports: [RouterOutlet, EditProfileComponent],
+  template: `<main>
+    <app-edit-profile></app-edit-profile>
+  </main>`,
   styleUrl: './app.component.css',
 })
 export class AppComponent {

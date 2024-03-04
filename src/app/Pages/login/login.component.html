@@ -1,0 +1,15 @@
+<div class="login-body">
+    <div class="main">  	
+        <div class="login">
+            <form (ngSubmit)="onLogin()">
+                
+                <input type="email" name="Username" [(ngModel)]="loginObj.UserName" placeholder="Username" required>
+                <input type="password" name="Password" [(ngModel)]="loginObj.Password" placeholder="Password"  required>
+                <button type="submit" >Login</button>
+            </form>
+            <p>Not a member? <a href routerLink="/signup">SignUp</a></p>
+
+
+        </div>
+    </div>
+</div>
